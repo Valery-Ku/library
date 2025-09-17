@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Library, LibraryBook, DigitalBook } from './library-system';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+  React.useEffect(() => {
+    //Код проверки 
+    const library = new Library();
+    const book1 = new LibraryBook('Война и мир', 'Лев Толстой', 1869);
+    library.addBook(book1);
+    const book2 = new DigitalBook('Преступление и наказание', 'Фёдор Достоевский', 1866);
+    library.addBook(book2);
+    library.checkoutBook('Война и мир');
+    library.checkoutBook('Преступление и наказание');
+    library.checkoutBook('Неизвестная книга');
+  }, []);
+
+  return <div>Результаты выведены консоль браузера</div>;
+};
 
 export default App;
